@@ -1,5 +1,7 @@
 <h1>List of Items</h1>
 
+<a href="/form">Form Insert</a>
+
 <table>
   <tr>
     <td>id</td>
@@ -7,7 +9,7 @@
     <td>qty</td>
     <td>amount</td>
   </tr>
-  <% items.forEach(function(item) { %>
+  <% items.forEach(item => { %>
   <tr>
     <td><%= item.id %></td>
     <td><%= item.name %></td>

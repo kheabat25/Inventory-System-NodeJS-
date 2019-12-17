@@ -28,4 +28,14 @@ router.get('/select', (req, res, next) => {
     res.render('select', { items: rs });
   });
 });
+
+router.get('/form', (req, res, next) => {
+  res.render('form');
+});
+
+router.post('/form', (req, res, next) => {
+  db.query('INSERT INTO items SET ?', req.body, (err, rs) => {
+    res.send('Insert Success');
+  });
+});
 module.exports = router;
