@@ -35,7 +35,13 @@ router.get('/form', (req, res, next) => {
 
 router.post('/form', (req, res, next) => {
   db.query('INSERT INTO items SET ?', req.body, (err, rs) => {
-    res.send('Insert Success');
+    res.redirect('/select');
+  });
+});
+
+router.get('/delete', (req, res, next) => {
+  db.query('DELETE FROM items WHERE id = ?', req.query.id, (err, rs) => {
+    res.redirect('/select');
   });
 });
 module.exports = router;

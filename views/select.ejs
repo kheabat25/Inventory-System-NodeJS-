@@ -8,6 +8,7 @@
     <td>name</td>
     <td>qty</td>
     <td>amount</td>
+    <td></td>
   </tr>
   <% items.forEach(item => { %>
   <tr>
@@ -15,6 +16,13 @@
     <td><%= item.name %></td>
     <td><%= item.qty %></td>
     <td><%= item.amount %></td>
+    <td>
+      <a
+        href="/delete?id=<%= item.id %>"
+        onClick="return confirm('Are you sure?')"
+        >Delete</a
+      >
+    </td>
   </tr>
   <% }); %>
 </table>
