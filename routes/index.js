@@ -30,7 +30,7 @@ router.get('/select', (req, res, next) => {
 });
 
 router.get('/form', (req, res, next) => {
-  res.render('form');
+  res.render('form', { item: {} });
 });
 
 router.post('/form', (req, res, next) => {
@@ -44,4 +44,22 @@ router.get('/delete', (req, res, next) => {
     res.redirect('/select');
   });
 });
+
+router.get('/edit', (req, res, next) => {
+  db.query('SELECT * FROM items WHERE id =?', req.query.id, (err, rs) => {
+    res.render('form', { item: rs[0] });
+  });
+});
+
+router.post('/edit', (req, res, next) => {
+  var param = [
+    req.body, // data for update
+    req.query.id // condition for update
+  ];
+
+  db.query('UPDATE items SET ? WHERE id = ?', param, (err, rs) => {
+    res.redirect('/select'); // go to page select
+  });
+});
+
 module.exports = router;
