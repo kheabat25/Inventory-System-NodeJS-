@@ -23,4 +23,9 @@ router.get('/testconnect', (req, res, next) => {
   }
 });
 
+router.get('/select', (req, res, next) => {
+  db.query('SELECT * FROM items', (err, rs) => {
+    res.render('select', { items: rs });
+  });
+});
 module.exports = router;
